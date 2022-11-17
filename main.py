@@ -1,7 +1,11 @@
 def main():
-    f = open("CS170_Small_Data__97.txt", "r")
-    print([float(number) for number in f.readline().split()])
-    print("test")
+    filename = input("Type in the name of the file to test: ")
+    data = []
+    with open(filename, "r") as file:
+        for line in file:
+            data.append([float(number) for number in line.split()])
+    print(data)
+
 
 if __name__ == "__main__":
     main()
