@@ -56,6 +56,11 @@ def main():
     elif algorithm == '2':
         current_set = [number + 1 for number in range(num_features)]
         best_set_overall = [number + 1 for number in range(num_features)]
+
+        accuracy = k_fold_cross_validation(data, current_set)
+        print("    Using feature set " + str(current_set) + " gives an accuracy of " + str(accuracy) + ".")
+        print("\nFeature set " + str(current_set) + " was best with an accuracy of " + str(accuracy) + ".\n")
+
         while len(current_set) > 1:
             best_feature, best_accuracy = 0, 0
             current_set_copy = copy.deepcopy(current_set)
