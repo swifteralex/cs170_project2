@@ -1,4 +1,5 @@
 import copy
+import time
 
 
 def k_fold_cross_validation(data, features):
@@ -31,6 +32,8 @@ def main():
                       " 2) Backward Elimination\n")
     print("\nThis dataset has " + str(num_features) + " features with " + str(len(data)) + " instances.")
     print("\nBeginning search...\n")
+
+    start = time.time()
 
     best_set_overall = []
     best_accuracy_overall = 0.5
@@ -78,8 +81,11 @@ def main():
             current_set.remove(best_feature)
             print("\nFeature set " + str(current_set) + " was best with an accuracy of " + str(best_accuracy) + ".\n")
 
+    end = time.time()
+
     print("Finished search! The best set of features found was " +
-          str(best_set_overall) + " with an accuracy of " + str(best_accuracy_overall) + ".")
+          str(best_set_overall) + " with an accuracy of " + str(best_accuracy_overall) +
+          ". The search took " + str(round(end - start, 2)) + " seconds.")
 
 
 if __name__ == "__main__":
